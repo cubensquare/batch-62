@@ -1,0 +1,19 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+   name: prom-node-exporter
+spec:
+  selector:
+    matchLabels:
+       app.kubernetes.io/component: exporter
+       app.kubernetes.io/name: node-exporter
+  template:
+   metadata:
+    name: testpod1
+    labels:
+         app.kubernetes.io/component: exporter
+         app.kubernetes.io/name: node-exporter
+   spec:
+     containers:
+     - name: testcontainer
+       image: prom/node-exporter
